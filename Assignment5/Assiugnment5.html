@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+  <title>Slide Show</title>
+
+
+
+<script>
+var currentSlide = 1;
+function goToSlide(n)
+{
+ if(n == 1){
+    document.getElementById('img1').style.visibility = "visible";
+    document.getElementById('img2').style.visibility = "hidden";
+ document.getElementById('img3').style.visibility = "hidden";
+ document.getElementById('img4').style.visibility = "hidden";
+ document.getElementById('btn1').classList.add('selected');
+ document.getElementById('btn2').classList.remove('selected');
+ document.getElementById('btn3').classList.remove('selected');
+ document.getElementById('btn4').classList.remove('selected');
+ document.getElementById('img1').classList.add('img');
+ document.getElementById('img2').classList.remove('img');
+ document.getElementById('img3').classList.remove('img');
+ document.getElementById('img4').classList.remove('img');
+currentSlide = 1;
+ }
+ if(n == 2){
+    document.getElementById('img2').style.visibility = "visible";
+    document.getElementById('img1').style.visibility = "hidden";
+ document.getElementById('img3').style.visibility = "hidden";
+ document.getElementById('img4').style.visibility = "hidden";
+ document.getElementById('btn2').classList.add('selected');
+ document.getElementById('btn1').classList.remove('selected');
+ document.getElementById('btn3').classList.remove('selected');
+ document.getElementById('btn4').classList.remove('selected');
+ document.getElementById('img2').classList.add('img');
+ document.getElementById('img1').classList.remove('img');
+ document.getElementById('img3').classList.remove('img');
+ document.getElementById('img4').classList.remove('img');
+ currentSlide = 2;
+
+ }
+ if(n == 3){
+    document.getElementById('img3').style.visibility = "visible";
+    document.getElementById('img1').style.visibility = "hidden";
+ document.getElementById('img2').style.visibility = "hidden";
+ document.getElementById('img4').style.visibility = "hidden";
+ document.getElementById('btn3').classList.add('selected');
+ document.getElementById('btn1').classList.remove('selected');
+ document.getElementById('btn4').classList.remove('selected');
+ document.getElementById('btn2').classList.remove('selected');
+ document.getElementById('img3').classList.add('img');
+ document.getElementById('img1').classList.remove('img');
+ document.getElementById('img2').classList.remove('img');
+ document.getElementById('img4').classList.remove('img');
+ currentSlide = 3;
+
+ }
+ if(n == 4){
+    document.getElementById('img4').style.visibility = "visible";
+    document.getElementById('img1').style.visibility = "hidden";
+ document.getElementById('img2').style.visibility = "hidden";
+ document.getElementById('img3').style.visibility = "hidden";
+ document.getElementById('btn4').classList.add('selected');
+ document.getElementById('btn1').classList.remove('selected');
+ document.getElementById('btn3').classList.remove('selected');
+ document.getElementById('btn2').classList.remove('selected');
+ document.getElementById('img4').classList.add('img');
+ document.getElementById('img3').classList.remove('img');
+ document.getElementById('img2').classList.remove('img');
+ document.getElementById('img1').classList.remove('img');
+ currentSlide = 4;
+
+ }
+}
+function goPrev()
+{
+    var nextSlide = currentSlide - 1
+    if(nextSlide == 0){
+      nextSlide = 4;
+    }
+    goToSlide(nextSlide);
+}
+function goNext()
+{
+  var nextSlide = currentSlide + 1
+  if(nextSlide == 5){
+    nextSlide = 1;
+  }
+  goToSlide(nextSlide);
+}
+</script>
+
+<style>
+body{
+  margin:0;
+}
+#prev{
+  position:fixed;
+  left: 10px;
+  bottom: 10px;
+}
+#next{
+  position:fixed;
+  right: 10px;
+  bottom: 10px;
+}
+img{
+  display: block;
+  position:absolute;
+  width: 100%;
+}
+.selected{
+  background: gold;
+}
+#numWrapper{
+  width: calc(100% - 200px);
+    bottom: 10px;
+    position: fixed;
+    margin-left: 100px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body onload='goToSlide(1)'>
+  <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Aegotheles_chrisoptus_-_Catlereigh_Nature_Reserve.jpg/300px-Aegotheles_chrisoptus_-_Catlereigh_Nature_Reserve.jpg' id = 'img1'>
+  <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Turnix_varius_-_Castlereigh_nature_reserve.jpg/450px-Turnix_varius_-_Castlereigh_nature_reserve.jpg' id = 'img2'>
+  <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Acanthorhynchus_tenuirostris_-_Mogo_Campground.jpg/450px-Acanthorhynchus_tenuirostris_-_Mogo_Campground.jpg' id = 'img3'>
+  <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Eopsaltria_australis_-_Mogo_Campground.jpg/450px-Eopsaltria_australis_-_Mogo_Campground.jpg' id = 'img4'>
+  <button id='prev' onclick='goPrev()'> Prev </button>
+  <button id='next' onclick='goNext()'> Next </button>
+
+  <div id='numWrapper'>
+    <button class='num' id = 'btn1' onclick='goToSlide(1)'> 1 </button>
+    <button class='num' id = 'btn2' onclick='goToSlide(2)'> 2 </button>
+    <button class='num' id = 'btn3' onclick='goToSlide(3)'> 3 </button>
+    <button class='num' id = 'btn4' onclick='goToSlide(4)'> 4 </button>
+  </div>
+</html>
